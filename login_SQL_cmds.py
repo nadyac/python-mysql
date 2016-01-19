@@ -16,7 +16,7 @@ def create_database(cursor):
 
 #connect to the database using username, password, host, database.
 try:
-	cnx = mysql.connector.connect(user='root', password='root', host='127.0.0.1', database='users_db')
+	cnx = mysql.connector.connect(user='[username]', password='[password]', host='127.0.0.1', database='[db_name]')
 	cursor = cnx.cursor()
 	print("Made connection.")
 
@@ -26,7 +26,7 @@ except mysql.connector.Error as err:
 		print("Could not connect to database with the given credentials.")
 	elif err.errno == errorcode.ER_BAD_DB_ERROR:
 		print("It seems that database does not exist. Will create it.")
-		cnx = mysql.connector.connect(user='root', password='root', host='127.0.0.1')
+		cnx = mysql.connector.connect(user='[user]', password='[password]', host='127.0.0.1')
 		cursor = cnx.cursor()
 		create_database(cursor)
 	else:

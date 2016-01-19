@@ -4,6 +4,49 @@ import mysql.connector
 from mysql.connector import errorcode
 
 DB_NAME = 'employees'
+=======
+try:
+	cnx = mysql.connector.connect(user='[user]', password='[pw]', host='127.0.0.1', database='testing')
+	cursor = cnx.cursor()
+except mysql.connector.Error as err:
+	if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+		print("Something went wrong. Could not connect to database with the given credentials.")
+	elif err.errno == errorcode.ER_BAD_DB_ERROR:
+		print("Database does not exist.")
+	else:
+		print(err)
+else:
+		print("connection successful. Maybe.")
+
+''' 
+======================================================================
+Note when there are lots of args to the db connection, might
+	be best to store them in a dictionary and use the ** operator.
+======================================================================
+config = {
+  'user': 'scott',
+  'password': 'tiger',
+  'host': '127.0.0.1',
+  'database': 'employees',
+  'raise_on_warnings': True,
+}
+
+cnx = mysql.connector.connect(**config)
+=======================================================================
+'''
+try:
+	cnx = mysql.connector.connect(user='[user]',password='[pw]', host='127.0.0.1')
+	# All DDL (Data Definition Language) statements are executed using a handle structure known as a cursor.
+	cursor = cnx.cursor()
+except mysql.connector.Error as err:
+	if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+		print("Something went wrong. Could not connect to database with the given credentials.")
+	elif err.errno == errorcode.ER_BAD_DB_ERROR:
+		print("Database does not exist.")
+	else:
+		print(err)
+else:
+	print("Second connection successful.")
 
 TABLES = {}
 TABLES['employees'] = (
@@ -128,3 +171,5 @@ config = {
 cnx = mysql.connector.connect(**config)
 =======================================================================
 '''
+=======
+>>>>>>> e1a5cb6cc8a5e9426b6972c5457932359db3521d
