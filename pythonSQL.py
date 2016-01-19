@@ -4,7 +4,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 try:
-	cnx = mysql.connector.connect(user='root', password='root', host='127.0.0.1', database='users_testing')
+	cnx = mysql.connector.connect(user='[user]', password='[pw]', host='127.0.0.1', database='testing')
 	cursor = cnx.cursor()
 except mysql.connector.Error as err:
 	if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
@@ -33,7 +33,7 @@ cnx = mysql.connector.connect(**config)
 =======================================================================
 '''
 try:
-	cnx = mysql.connector.connect(user='root',password='root', host='127.0.0.1')
+	cnx = mysql.connector.connect(user='[user]',password='[pw]', host='127.0.0.1')
 	# All DDL (Data Definition Language) statements are executed using a handle structure known as a cursor.
 	cursor = cnx.cursor()
 except mysql.connector.Error as err:
@@ -46,7 +46,7 @@ except mysql.connector.Error as err:
 else:
 	print("Second connection successful.")
 
-DB_NAME = 'users_testing'
+DB_NAME = 'testing'
 
 TABLES = {}
 TABLES['employees'] = (
