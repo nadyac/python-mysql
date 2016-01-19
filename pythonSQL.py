@@ -4,7 +4,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 DB_NAME = 'employees'
-=======
+
 try:
 	cnx = mysql.connector.connect(user='[user]', password='[pw]', host='127.0.0.1', database='testing')
 	cursor = cnx.cursor()
